@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Bosh sahifa{% endblock title %}
+{% block content %}
+    <!-- {% if user.is_authenticated %}
+        {{ user.username }}!
+        <p><a href="{% url 'logout' %}">Chiqib ketish</a></p>
+    {% else %}
+        <p>Saytga kirmagansiz</p>
+        <a href="{% url 'login' %}">Kirish | </a>
+        <a href="{% url 'signup' %}">Ro'yxatdan o'tish</a>
+    {% endif %} -->
+    {% if user.is_authenticated %}
+    <br />
+    <div class="jumbotron">
+        <h1 class="display-4">Hello {{ user.username }}</h1>
+        <p><a href="{% url 'logout' %}">Chiqib ketish</a></p>
+        <hr class="my-4">
+        <p>Lastest posts</p>
+        <p class="lead">
+            <a href="{% url 'article_list' %}" class="btn btn-primary btn-lg">Into posts</a>
+        </p>
+    </div>
+    {% else %}
+    <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div id="block-to-remove">
+                <p>Saytga kirmagansiz</p>
+                <a href="{% url 'login' %}">Kirish | </a>
+                <a href="{% url 'signup' %}">Ro'yxatdan o'tish</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    {% endif %}
+{% endblock content %}
